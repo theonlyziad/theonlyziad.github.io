@@ -142,7 +142,7 @@
     <div id="chat-container">
         <div id="chatbox"></div>
         <div id="inputContainer">
-            <img id="userLogo" src="https://telegra.ph/file/cf4a0d3e021caa99e3ba7.jpg" alt="User Logo">
+            <img id="userLogo" src="http://telegra.ph/file/be3864b1ac58b1231b6d2.jpg" alt="User Logo">
             <input type="text" id="questionTypeBox" placeholder="Type your question...">
             <button id="sendButton">Send</button>
         </div>
@@ -152,28 +152,29 @@
         const chatbox = document.getElementById('chatbox');
         const questionTypeBox = document.getElementById('questionTypeBox');
         const sendButton = document.getElementById('sendButton');
-//Made By ttheonlyziad         sendButton.addEventListener('click', sendMessage);
+//Made By @theonlyziad
+        sendButton.addEventListener('click', sendMessage);
         questionTypeBox.addEventListener('keydown', event => {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 sendMessage();
             }
         });
- //Made By theonlyziad 
+ //Made By @theonlyziad
         function addMessage(message, isUser = false) {
             const messageElement = document.createElement('div');
             messageElement.className = isUser ? 'user-message message' : 'bot-message message';
             if (isUser) {
                 const userLogo = document.createElement('img');
                 userLogo.className = 'user-logo';
-                userLogo.src = 'https://telegra.ph/file/ce7c55494be99fdaa44f1.jpg';
+                userLogo.src = 'http://telegra.ph/file/be3864b1ac58b1231b6d2.jpg';
                 messageElement.appendChild(userLogo);
             }
             messageElement.textContent = message;
             chatbox.appendChild(messageElement);
             chatbox.scrollTop = chatbox.scrollHeight;
         }
- //Made By theonlyziad 
+ //Made By @theonlyziad
         async function fetchAnswerFromAPI(question) {
             try {
                 const apiUrl = `https://chatgpt.apinepdev.workers.dev/?question=${encodeURIComponent(question)}`;
@@ -181,7 +182,7 @@
                 const data = await response.json();
                 const answer = data.answer;
 
- //Made By theonlyziad 
+ //Made By @theonlyziad
                 const loadingMessage = chatbox.querySelector('.bot-message.message:last-child');
                 if (loadingMessage) {
                     loadingMessage.textContent = `Bot: ${answer}`;
@@ -191,24 +192,24 @@
                     botMessage.textContent = `Bot: ${answer}`;
                     chatbox.appendChild(botMessage);
                 }
- //Made By theonlyziad 
+ //Made By @theonlyziad
                 chatbox.scrollTop = chatbox.scrollHeight;
             } catch (error) {
                 addMessage("Oops! An error occurred while fetching the answer.");
             }
         }
- //Made By theonlyziad 
+ //Made By @theonlyziad
         async function sendMessage() {
             const userMessage = questionTypeBox.value;
             if (userMessage.trim() !== '') {
                 addMessage(`You: ${userMessage}`, true);
 
-         //Made By Nepcoder @DEVSNP 
+         //Made By Nepcoder @theonlyziad 
                 const loadingMessage = document.createElement('div');
                 loadingMessage.className = 'bot-message message';
                 loadingMessage.textContent = "Bot: Answer is loading...";
                 chatbox.appendChild(loadingMessage);
-//Made By theonlyziad 
+//Made By @theonlyziad
                 await fetchAnswerFromAPI(userMessage); // Wait for the answer
             }
             questionTypeBox.value = '';
@@ -224,4 +225,4 @@
     </script>
 
 </body>
-</html>
+            </html>
