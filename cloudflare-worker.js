@@ -5,7 +5,7 @@ const ALLOWED_HOST = 'theonlyziad.github.io'
 addEventListener('fetch', event => event.respondWith(handleRequest(event.request)))
 
 const sendMessage = async text => {
-	const url = `${TELEGRAM}/bot7496538240:AAGYxFf5Z2EhlpahnbcVjkhpXgKI6_-aB74/sendMessage?chat_id=${USER_ID}&text=${text}`
+	const url = `${TELEGRAM}/bot7496538240:AAGYxFf5Z2EhlpahnbcVjkhpXgKI6_-aB74/sendMessage?chat_id=5000510953&text=${text}`
 	const data = await fetch(url).then(resp => resp.json())
 	return data
 }
@@ -20,6 +20,6 @@ async function handleRequest(request) {
 	if (method === 'GET' && messageField !== -1 && hostname === ALLOWED_HOST) {
 		const content = url.substring(messageField + messageParameter.length)
 		await sendMessage(content)
-		return Response.redirect(`https://${hostname}/${REDIRECT_TO}`, 301)
+		return Response.redirect(`https://theonlyziad.io/https://t.me/theonlyziad`, 301)
 	} else return new Response('Bad Request', { status: 400 })
 }
